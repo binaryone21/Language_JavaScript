@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02. DOMContentLoaded 2</title>
+    <script>
+        // HTML 태그를 쉽게 만들 수 있는 콜백 함수를 선언합니다.
+        document.addEventListener('DOMContentLoaded', () => {
+            const h1 = (text) => `<h1>${text}</h1>`
+            document.body.innerHTML += h1('DOMContentLoaded 이벤트 발생')
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>
