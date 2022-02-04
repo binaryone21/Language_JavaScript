@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05. class image</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        // 애플리케이션 클래스 생성하기'
+        class App extends React.Component {
+            render() {
+                return <div>
+                    <h1>{this.props.name}</h1>
+                    <img src={this.props.imgUrl}/>
+                </div>
+            }
+        }
+
+        // 출력하기
+        const container = document.getElementById('_05_react')
+        ReactDOM.render(<App name="구름" imgUrl="http://placedog.net/400/200"/>, container)
+    </script>
+</head>
+<body>
+    <div id="_05_react"></div>
+</body>
+</html>

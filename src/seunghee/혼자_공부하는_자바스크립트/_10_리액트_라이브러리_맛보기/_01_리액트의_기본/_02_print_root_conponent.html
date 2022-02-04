@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02. print root component</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        // 컴포넌트와 컨테이너 생성하기
+        const component = <h1>리액트 기본</h1>
+
+        // 출력하기
+        const container = document.getElementById('_02_react')
+        ReactDOM.render(component, container)
+    </script>
+</head>
+<body>
+    <div id="_02_react"></div>
+</body>
+</html>

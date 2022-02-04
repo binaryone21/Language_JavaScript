@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03. name image</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        // 상수 선언하기
+        const name = '구름'
+        const imgUrl = "http://placedog.net/400/200"
+
+        // 컴포넌트와 컨테이너 생성하기
+        const component = <div>
+            <h1>{name}님 안녕하세요!</h1>
+            <img src={imgUrl} />
+        </div>
+
+        // 출력하기
+        const container = document.getElementById('_03_react')
+        ReactDOM.render(component, container)
+    </script>
+</head>
+<body>
+    <div id="_03_react"></div>
+</body>
+</html>

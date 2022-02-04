@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>13. component array 2</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        // 애플리케이션 클래스 생성하기
+        class App extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {fruits : ['사과', '바나나', '배', '귤']}
+            }
+
+            render() {
+                // 항목을 생성합니다.
+                const list = this.state.fruits.map((item) => {
+                    return <li>{item}</li>
+                })
+                // 출력합니다.
+                return <ul>{list}</ul>
+            }
+        }
+
+        // 출력하기
+        const container = document.getElementById('root')
+        ReactDOM.render(<App/>, container)
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
