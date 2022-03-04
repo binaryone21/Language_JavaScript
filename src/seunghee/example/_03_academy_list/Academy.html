@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Academy</title>
+    <script>
+        let name = ["유재석", "이광수", "하하"]
+        let kor = [99, 70, 50]
+        let eng = [98, 60, 40]
+        let mat = [99, 80, 65]
+        let sum = [0, 0, 0]
+        let avg = [0, 0, 0]
+        let grd = ['', '', ''];
+
+        for(let i=0; i<3; i++) {
+            sum[i] = kor[i] + eng[i] + mat[i]
+            avg[i] = sum[i]/3
+            grd[i] = (avg[i] >= 90) ? '수' :
+                        (avg[i] >= 80) ? '우' :
+                            (avg[i] >= 70) ? '미' :
+                                (avg[i] >= 60) ? '양' : '가'
+        }
+
+        for(let i=0; i<3; i++) {
+            document.write("이름 : ", name[i], "<br>")
+            document.write("국어 : ", kor[i], "<br>")
+            document.write("영어 : ", eng[i], "<br>")
+            document.write("수학 : ", mat[i], "<br>")
+            document.write("-------------", "<br>")
+            document.write("총점 : ", sum[i], "<br>")
+            document.write("평균 : ", avg[i].toFixed(1), "<br>")
+            document.write("학점 : ", grd[i], "<br>")
+            document.write("<br>")
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

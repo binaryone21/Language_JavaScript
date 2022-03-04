@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Academy</title>
+    <script>
+        let computeBtn = document.getElementById('compute')
+
+        computeBtn.addEventListener('click', computeEvent)
+
+        function computeEvent() {
+            let name = document.getElementById('#name').val()
+            let kor = document.getElementById('#name').val()
+            let eng = document.getElementById('#name').val()
+            let mat = document.getElementById('#name').val()
+            let sum = 0
+            let grd = '';
+
+            sum = kor + eng + mat
+            avg = sum/3
+            grd = (avg >= 90) ? '수' :
+                    (avg >= 80) ? '우' :
+                        (avg >= 70) ? '미' :
+                            (avg >= 60) ? '양' : '가'
+
+            document.write("이름 : ", name, "<br>")
+            document.write("국어 : ", kor, "<br>")
+            document.write("영어 : ", eng, "<br>")
+            document.write("수학 : ", mat, "<br>")
+            document.write("-------------", "<br>")
+            document.write("총점 : ", sum, "<br>")
+            document.write("평균 : ", avg, "<br>")
+            document.write("학점 : ", grd, "<br>")
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <span>이름</span>
+        <input type="text" id="name">
+    </div>
+    <div>
+        <span>국어 성적</span>
+        <input type="text" id="kor">
+    </div>
+    <div>
+        <span>영어 성적</span>
+        <input type="text" id="eng">
+    </div>
+    <div>
+        <span>수학 성적</span>
+        <input type="text" id="mat">
+    </div>
+    <div>
+        <button type="button" id="compute">제출하기</button>
+    </div>
+</body>
+</html>
