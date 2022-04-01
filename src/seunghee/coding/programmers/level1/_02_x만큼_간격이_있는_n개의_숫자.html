@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02. x만큼 간격이 있는 n개의 숫자</title>
+    <script>
+        console.log(
+            "함수 solution은 정수 x와 자연수 n을 입력 받아,\n" +
+            "x부터 시작해 x씩 증가하는 숫자를 n개 지니는 리스트를 리턴해야 합니다.\n" +
+            "다음 제한 조건을 보고, 조건을 만족하는 함수, solution을 완성해주세요."
+        )
+
+        // 입력
+        print(solution(2, 5))
+        print(solution(4, 3))
+        print(solution(-4, 2))
+
+        // 연산
+        function solution(x, n) {
+            let list = []
+            for(let i=1; i<=n; i++) {
+                list.push(x*i)
+            }
+            if(!list.length) list = [0]
+            return list
+        }
+
+        // 출력
+        function print(list) {
+            console.log(list)
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
