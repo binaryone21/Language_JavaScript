@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form>
+        <field>
+            <legend>
+                <div>
+                    <label for="x"></label>
+                    <input type="text" id="x"/>
+                </div>
+                <div>
+                    <label for="y"></label>
+                    <input type="text" id="y"/>
+                </div>
+                <div>
+                    <button type="button" id="plusBtn">+</button>
+                    <button type="button" id="minusBtn">-</button>
+                    <button type="button" id="timesBtn">*</button>
+                    <button type="button" id="divideBtn">/</button>
+                </div>
+                <h1 id="result"></h1>
+            </legend>
+        </field>
+    </form>
+
+    <!-- 연산 기능을 갖는 함수(들)이 정의된 모듈 -->
+    <script src="js/02_function.js"></script>
+
+    <!-- 이 html 파일의 js 내용 -->
+    <script>
+        const x = document.querySelector("#x");
+        const y = document.querySelector("#y");
+        const result = document.querySelector("#result");
+
+        document.querySelector("#plusBtn").addEventListener("click", e => {
+            result.innerHTML = plus(parseInt(x.value), parseInt(y.value));
+        })
+        document.querySelector("#minusBtn").addEventListener("click", e => {
+            result.innerHTML = minus(parseInt(x.value), parseInt(y.value));
+        })
+        document.querySelector("#timesBtn").addEventListener("click", e => {
+            result.innerHTML = times(parseInt(x.value), parseInt(y.value));
+        })
+        document.querySelector("#divideBtn").addEventListener("click", e => {
+            result.innerHTML = divide(parseInt(x.value), parseInt(y.value));
+        })
+    </script>
+</body>
+</html>

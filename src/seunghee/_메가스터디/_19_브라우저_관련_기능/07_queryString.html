@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 id="console"></h1>
+    <a href="07_queryString.html?weekday=mon&a=1&b=2&c=3">링크1</a> |
+    <a href="07_queryString.html?weekday=sun&d=100&e=200&f=300">링크1</a>
+    <script>
+        /** queryString 확인 */
+        // ?weekday=mon&a=1&b=2&c=3
+        console.log(location.search);
+
+        /** queryString 을 객체로 변환 */
+        const query = new URLSearchParams(location.search);
+
+        /** 생성된 객체를 JSON 으로 변환 */
+        const params = Object.fromEntries(query);
+        console.log(params);
+
+        let msg = "";
+        switch(params.weekday) {
+            case "mon" : msg="월요일입니다."; break;
+            case "sun" : msg="일요일입니다."; break;
+        }
+        document.querySelector("#console").innerHTML = msg;
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .popup {
+            border : 1px solid black;
+            background-color : #eee;
+            box-shadow: 0 0 10px #000;
+            padding: 15px;
+            position: absolute;;
+            width: 280px;
+            height: 300px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 999999;
+
+            /* 기본적으로 팝업을 숨김 */
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>팝업창 열기</h1>
+    <div class="popup">
+        <h2>이 부분은 팝업창 영역입니다.</h2>
+        <hr/>
+        <label>
+            <input type="checkbox" id="no-open" value="Y"/>
+            15초간 이 창을 열지 않음
+        </label>
+        <button type="button" id="close-popup">닫기</button>
+    </div>
+
+    <!-- 쿠키 관련 기능을 재사용하기 위한 함수 -->
+    <script>
+        const getCookie = (name) => {
+            // 주어진 이름에 대해 "; name=<value>" 패턴을 찾아 <value> 부분만 반환함
+            const regex = new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)");
+
+            let matches = document.cookie.match(regex);
+
+            // 반환할 값이 있다면 decoding 을 수행하고 없다면 undefined 를 반환함
+            return matches ? decodeURIComponent(matches[1]) : undefined;
+        };
+
+        const setCookie = (name, value, maxAge) => {
+            // "이름=값" 형식으로 저장할 문자열을 만듬
+            const encName = encodeURIComponent(name);
+            const encValue = encodeURIComponent(value);
+            let updatedCookie = `${encName}=${encValue};`;
+
+            // 유효경로 설정
+            updatedCookie += "path=/;";
+
+            // 유효시간은 파라미터가 전달된 경우만 설정
+            // 파라미터가 전달 안된 경우 설정되지 않기 때문에 브라우저를 닫기 전까지 유지
+            if(maxAge !== undefined) {
+                updatedCookie += `max-age=${maxAge}`;
+            }
+
+            // 저장
+            document.cookie = updatedCookie;
+        };
+    </script>
+    <script>
+        // 쿠기가 저장되어 있지 않다면 레이어 팝업을 화면에 표시함
+        // --> 쿠키가 저장되어 있다면 이 if 문은 건너뛰므로 팝업을 표시하지 않을 것이다.
+        if(!getCookie('no-popup')) {
+            document.querySelector(".popup").style.display = "block";
+        }
+
+        /** 닫기 버튼에 대한 클릭 이벤트 */
+        document.querySelector("#close-popup").addEventListener('click', e => {
+            // 일단 팝업을 닫는다.
+            document.querySelector(".popup").style.display = "none";
+
+            // 체크가 되었다면 쿠키를 생성 -> 새로고침되었을 때 47 라인의 코드가 실행되지 않을것이다.
+            if(document.querySelector("#no-open").checked) {
+                setCookie("no-popup", "Y", 15);
+                // 오늘 하루 이 창을 열지 않음인 경우 24시간으로 설정
+                // setCookie("noPopup", "Y", 60*60*24);
+            }
+        });
+    </script>
+</body>
+</html>
