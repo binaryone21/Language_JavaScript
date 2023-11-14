@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .subplot {
+            width: 50%;
+            padding: 10px;
+        }
+        .subplot-item {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chart.js</h1>
+    <p>
+        <a href="https://www.chartjs.org/">https://www.chartjs.org/</a>
+    </p>
+    <hr/>
+    <div class="container">
+        <div class="subplot">
+            <h2>기본 선 그래프</h2>
+            <div class="subplot-item">
+                <canvas id="myChart1"></canvas>
+            </div>
+        </div>
+        <div class="subplot">
+            <h2>기본 막대 그래프</h2>
+            <div class="subplot-item">
+                <canvas id="myChart2"></canvas>
+            </div>
+        </div>
+        <div class="subplot">
+            <h2>다중 막대 그래프</h2>
+            <div class="subplot-item">
+                <canvas id="myChart3"></canvas>
+            </div>
+        </div>
+        <div class="subplot">
+            <h2>파이 그래프</h2>
+            <div class="subplot-item">
+                <canvas id="myChart4"></canvas>
+            </div>
+        </div>
+        <div class="subplot">
+            <h2>Polar Area Chart</h2>
+            <div class="subplot-item">
+                <canvas id="myChart5"></canvas>
+            </div>
+        </div>
+        <div class="subplot">
+            <h2>도넛 그래프</h2>
+            <div class="subplot-item">
+                <canvas id="myChart6"></canvas>
+            </div>
+        </div>
+        <div class="subplot">
+            <h2>산점도 그래프</h2>
+            <div class="subplot-item">
+                <canvas id="myChart7"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script>
+        // 데이터 셋
+        const names = ["철수", "영희", "민수", "수현", "호영"];
+        const kor = [98, 88, 92, 63, 71];
+        const eng = [82, 90, 70, 60, 60];
+        const mat = [88, 62, 71, 31, 64];
+
+        // 그래프가 표시될 캔버스 영역
+        const myChart1 = document.getElementById("myChart1");
+        const myChart2 = document.getElementById("myChart2");
+        const myChart3 = document.getElementById("myChart3");
+        const myChart4 = document.getElementById("myChart4");
+        const myChart5 = document.getElementById("myChart5");
+        const myChart6 = document.getElementById("myChart6");
+        const myChart7 = document.getElementById("myChart7");
+
+        /** 선 그래프 그리기 */
+        new Chart(myChart1, {
+            // 그래프 종류 (line, bar, pie, polarArea, doughnut, scatter)
+            type : "line",
+
+            // 데이터 영역
+            data : {
+                // x 축 항목
+                labels : names,
+                // 데이터 구성
+                datasets : [
+                    {
+                        label : "국어",
+                        data : kor,
+                        borderWidth: 1,
+                        borderColor: "#ff6600"
+                    }, {
+                        label : "영어",
+                        data : eng,
+                        borderWidth: 1,
+                        borderColor: "#ff00ff"
+                    }
+                ]
+            },
+            options : {
+                // 그래프의 가로, 세로 비율 유지 -> 부모 div 의 넓이에만 맞추고 높이는 무시함
+                // false 로 설정할 경우 부모의 width, height 에 크기를 맞춤
+                maintainAspectRatio: false
+            }
+        });
+
+        /** 기본 막대 그래프 그리기 */
+        new Chart(myChart2, {
+            type : 'bar',
+            data : {
+                labels: names,
+                datasets: [
+                    {
+                        label : "국어",
+                        data : kor,
+                        borderWidth: 0.5,
+                        // 색상 처리 팁 : border 와 background 를 동일 색상으로 처리하되, border 는 불투명, background 는 반투명
+                        // 단일 문자열인 경우 모든 막대가 같은 색상.
+                        // 데이터의 수 만큼 배열로 색상을 나열할 경우 각 막대별로 다른 색상
+                        borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)"],
+                        backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)"],
+                    }
+                ]
+            },
+            options: {
+                maintainAspectRatio : false,
+                // 가로 막대 그래프로 전환 (x or y). 막대 그래프인 경우만 사용하는 옵션
+                indexAxis : "y",
+            }
+        });
+        /** 다중 막대 그래프 그리기 */
+        new Chart(myChart3, {
+            type : "bar",
+            data : {
+                labels : names,
+                datasets : [
+                    {
+                        label : "국어",
+                        data : kor,
+                        borderWidth: 0.5,
+                        borderColor: "rgba(54, 162, 235, 1)",
+                        backgroundColor : "rgba(54, 162, 235, 0.2)"
+                    }, {
+                        label : "국어",
+                        data : eng,
+                        borderWidth: 0.5,
+                        borderColor: "rgba(255, 99, 132, 1)",
+                        backgroundColor : "rgba(255, 99, 132, 0.2)"
+                    }
+                ]
+            },
+            options : {
+                maintainAspectRatio: false,
+            }
+        });
+
+        /** 파이 그래프 그리기 */
+        new Chart(myChart4, {
+            type : "pie",
+            data : {
+                labels : names,
+                datasets : [
+                    {
+                        label : "국어",
+                        data : kor,
+                        borderWidth: 0.5,
+                        borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)"],
+                        backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)"],
+                    }
+                ]
+            },
+            options : {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: "left",
+                    },
+                    title: {
+                        display: true,
+                        text: "학생별 점수 비율"
+                    },
+                },
+            },
+        });
+
+        /** Polar Area 그리기 */
+        new Chart(myChart5, {
+            type: "polarArea",
+            data: {
+                labels: names,
+                datasets: [
+                    {
+                        label: "국어",
+                        data: kor,
+                        borderWidth: 0.5,
+                        borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)"],
+                        backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)"],
+                    },
+                ],
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: "left",
+                    },
+                    title: {
+                        display: true,
+                        text: "학생별 점수 비율"
+                    },
+                },
+            },
+        });
+
+        /** 도넛 그래프 그리기 */
+        new Chart(myChart6, {
+            type: "doughnut",
+            data: {
+                labels: names,
+                datasets: [
+                    {
+                        data: kor,
+                        borderWidth: 0.5,
+                        borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)"],
+                        backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)"],
+                    }
+                ],
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: "left"
+                    },
+                    title: {
+                        display: true,
+                        text: "학생별 점수 비율"
+                    }
+                },
+            },
+        });
+
+        /** 선점도 그래프 그리기 */
+        new Chart(myChart7, {
+            type: "scatter",
+            data: {
+                labels: kor,
+                datasets: [
+                    {
+                        label: "국어점수에 따른 영어 점수",
+                        data: eng,
+                        borderWidth: 0.5,
+                        borderColor: "rgba(255, 99, 132, 1)",
+                        backgroundColor: "rgba(255, 99, 132, 0.2)",
+                    }, {
+                        label: "국어점수에 따른 수학 점수",
+                        data: mat,
+                        borderWidth: 0.5,
+                        borderColor: "rgba(54, 162, 235, 1)",
+                        backgroundColor: "rgba(54, 162, 235, 0.2)",
+                    }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+            }
+        })
+    </script>
+</body>
+</html>

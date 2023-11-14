@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #loading {
+            width : 100px;
+            height: 100px;
+            background: url(img/loading.gif) no-repeat center/cover;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            display: none;
+        }
+        #loading.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading"></div>
+    <h1>영화진흥위원회 박스오피스 순위</h1>
+    <input type="date" id="targetDt" />
+    <hr/>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>순위</th>
+                <th>영화제목</th>
+                <th>관객수</th>
+                <th>개봉일</th>
+            </tr>
+        </thead>
+        <tbody id="list-body"></tbody>
+    </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        /** 날짜값이 변경된 경우에 대한 이벤트 */
+        document.querySelector("#targetDt").addEventListener("change", async (e) => {
+            /** 1) 기본 준비 */
+            // 로딩바 표시하기
+            const loading = document.querySelector("#loading");
+            loading.classList.add("action");
+
+            // 검색결과를 저장할 빈 변수
+            let response = null;
+
+            /** 2) Ajax 요청 */
+            // 영화진흥위원회 OpenAPI 에게 데이터 요청 보내기
+            try {
+                response = await axios.get("http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json", {
+                    params : {
+                        key : "65ba04651c29935da6961a405068ddfd",
+                        targetDt : e.currentTarget.value.replaceAll("-", ""),
+                    },
+                });
+
+                console.log(response.data);
+            } catch(error) {
+                alert(error);
+            } finally {
+                loading.classList.remove("active");
+            }
+
+            /** 3) OpenAPI 의 응답 결과를 화면에 표시하기 */
+            // 목록이 표시될 <tbody> 영역
+            const listBody = document.querySelector("#list-body");
+
+            // 이미 출력되고 있는 항목이 있다면 삭제한다.
+            Array.from(listBody.getElementsByClassName("tr")).map((v, i) => {
+                listBody.removeChild(v);
+            });
+
+            response.data.boxOfficeResult.dailyBoxOfficeList.forEach((v, i) => {
+                const tr = document.createElement("tr");
+                listBody.appendChild(tr);
+
+                const td1 = document.createElement("td");
+                td1.innerHTML = v.rank;
+                tr.appendChild(td1);
+
+                const td2 = document.createElement("td");
+                td2.innerHTML = v.movieNm;
+                tr.appendChild(td2);
+
+                const td3 = document.createElement("td");
+                td3.innerHTML = v.audiCnt;
+                tr.appendChild(td3);
+
+                const td4 = document.createElement("td");
+                td4.innerHTML = v.openDt;
+                tr.appendChild(td4);
+            })
+        })
+    </script>
+</body>
+</html>
+
+<!--
+http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json
+65ba04651c29935da6961a405068ddfd
+-->

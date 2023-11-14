@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .text-success {
+            color: #0066ff;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Json</h1>
+    <a href="#" id="btn">load hello.json</a>
+    <div id="result"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.querySelector("#btn").addEventListener("click", async (e) => {
+            e.preventDefault();
+            console.log('Loading...');
+
+            const url = 'http://localhost:3001/hello';
+            let response = null;
+            try {
+                response = await axios.get(url);
+                console.log(response.data);
+            } catch(error) {
+                // Axios 의 기본 에러 메시지를 추출하여 문자열로 구성
+                console.log(`[Error Code] ${ error.code }`);
+                console.log(`[Error Message] ${ error.message }`);
+                let alertMsg = error.message;
+
+                // HTTP 상태메시지가 포함되어 있다면 해당 내용을 에러 문자열에 추가
+                if(error.response !== undefined) {
+                    const errorMsg = `${ error.response.status } error - ${ error.response.statusText }`;
+                    console.log(`[HTTP Status] ${ errorMsg }`);
+                    alertMsg += `\n${ errorMsg }`;
+                }
+
+                // 메시지박스로 에러 내용 표시
+                alert(alertMsg);
+
+                // catch 에서 return 을 하더라도 finally 가 수행된 후 실행이 취소된다.
+                return;
+            } finally {
+                console.log("Finish!!!");
+            }
+
+            // 동적으로 <h1>태그 생성 --> <h1 class='text-success'>안녕하세요. Ajax</h1>
+            const h1 = document.createElement("h1");
+            h1.classList.add("text-success");
+            h1.innerHTML = response.data.msg;
+            document.querySelector("#result").appendChild(h1);
+        })
+    </script>
+</body>
+</html>

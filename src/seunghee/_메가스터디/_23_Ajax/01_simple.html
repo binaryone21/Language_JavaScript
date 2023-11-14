@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container {
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            display: flex;
+        }
+        .container a {
+            display: block;
+            margin-right: 30pc;
+        }
+        .text-success {
+            color: #0066ff;
+            font-size: 24px;
+        }
+        .text-primary {
+            color: #0066ff;
+            font-size: 24px;
+        }
+        .text-primary {
+            color: #007700;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Get</h1>
+    <div class="cintainer">
+        <a href="http://localhost:3001/hello.html">move to hello.html</a>
+        <a href="#" id="btn1">Promise Load</a>
+        <a href="#" id="btn2">Async Await Load</a>
+    </div>
+    <div id="result"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        /** Promise 방식의 Ajax 요청 */
+        document.querySelector("#btn1").addEventListener('click', (e) => {
+            e.preventDefault();
+
+            console.log("Loading...");
+
+            // 요청(접속)할 대상 페이지 주소 -> 이 파일의 소스코드를 읽어온다.
+            const url = "http://localhost:3001/hello.html";
+
+            axios.get(url)
+                .then((response) => {
+                    console.log(response.data);
+
+                    // 응답결과를 출력할 대상 객체
+                    const result = document.querySelector("#result");
+
+                    // 응답결과를 출력
+                    result.insertAdjacentHTML("beforeend", response.data);
+                })
+                .catch((error) => {
+                    console.error(error);
+                    alert(error.message);
+                })
+                .finally(() => {
+                    console.log("Finish!!!");
+                });
+        });
+
+        /**  Async Await 방식의 Ajax 요청(권장) */
+        document.querySelector("#btn2").addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            console.log("Loading...");
+
+            // 요청(접속)할 대상 페이지 주소 -> 이 파일의 소스코드를 읽어온다.
+            const url = "http://localhost:3001/hello.html";
+
+            // 결과를 저장할 변수
+            let response = null;
+            try {
+                response = await axios.get(url);
+                console.log(response.data);
+            } catch(error) {
+                console.error(error);
+                alert(error.message);
+
+                // catch 에서 return 을 하더라도 finally 가 수행된 후 실행이 취소된다.
+                return;
+            }  finally {
+                console.log("Finish!!!");
+            }
+
+            // 응답결과를 출력할 대상 객체
+            const result = document.querySelector("#result");
+            // 응답결과를 출력
+            result.insertAdjacentHTML("beforeend", response.data);
+        });
+    </script>
+</body>
+</html>

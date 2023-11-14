@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /** CSS 는 중복 ID 에 대해서 문제 없이 처리함 */
+        #hello {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="hello">Hello World</h1>
+    <h1 id="hello">Hello World</h1>
+    <h1 id="hello">Hello World</h1>
+
+    <script>
+        // JS 는 중복 ID 가 있을 경우 처리 불가
+        // --> 가장 첫 번째 항목만을 처리 가능함.
+        /*document.getElementById('#hello').innerHTML = "헬로월드2";*/
+        document.querySelector("#hello").innerHTML = "헬로월드2";
+    </script>
+</body>
+</html>

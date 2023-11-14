@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #loading {
+            width: 100px;
+            height: 100px;
+            background: url(img/loading.gif) no-repeat center/cover;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            display: none;
+        }
+        #loading.active {
+            display: block;
+        }
+        dt {
+            font-weight: bold;
+            margin: 10px 0px;
+            font-size: 20px;
+        }
+        dt:before {
+            content: '*';
+            padding-right: 5px;
+        }
+        dd {
+            font-weight: normal;
+            margin-bottom: 30px;
+            border-left: 5px #d5d5d5 solid;
+            padding-left: 15px;
+            font-size: 16px;
+        }
+        #container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading"></div>
+    <h1>Async Await Axios</h1>
+    <a href="#" class="myLink" data-deptno="101">컴퓨터공학과</a>
+    <a href="#" class="myLink" data-deptno="102">멀티미디어학과</a>
+    <a href="#" class="myLink" data-deptno="201">전자공학과</a>
+    <a href="#" class="myLink" data-deptno="202">기계공학과</a>
+
+    <dl id="container">
+        <dt>학과번호</dt>
+        <dd class="id"></dd>
+        <dt>학과명</dt>
+        <dd class="dname"></dd>
+        <dt>학과위치</dt>
+        <dd class="loc"></dd>
+    </dl>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // 링크 객체
+        const myLink = document.querySelectorAll(".myLink");
+
+        // 결과를 출력할 컨테이너 객체
+        const container = document.querySelector("#container");
+
+        /** 링크객체에 대한 반복 처리 */
+        myLink.forEach((v, i) => {
+            /** 각각의 링크객체(v)에게 click 이벤트 정의 */
+            v.addEventListener('click', async (e) => {
+                e.preventDefault();
+
+                // 로딩바 표시하기
+                const loading = document.querySelector("#loading");
+                loading.classList.add("active");
+
+                // 링크에 숨겨진 data-deptno 의 값을 가져옴
+                const deptno = e.currentTarget.dataset.deptno;
+                // console.log(deptno);
+
+                // 검색결과를 저장할 빈 변수
+                let response = null;
+
+                try {
+                  response = await axios.get(`http://localhost:3001/department/${ deptno }`);
+                  console.log(response.data);
+                } catch(error) {
+                    // Axios 의 기본 에러 메시지를 추출하여 문자열로 구성
+                    console.log(`[Error Code] ${ error.code }`);
+                    console.log(`[Error Message] ${ error.message }`);
+                    let alertMsg = error.message;
+
+                    // HTTP 상태메시지가 포함되어 있다면 해당 내용을 에러 문자열에 추가
+                    if(error.response !== undefined) {
+                        const errorMsg = `${ error.response.status } error - ${ error.response.statusText }`;
+                        console.log(`[HTTP Status] ${ errorMsg }`);
+                        alertMsg += `\n${ errorMsg }`;
+                    }
+
+                    // 메시지박스로 에러 내용 표시
+                    alert(alertMsg);
+
+                    // catch 에서 return 을 하더라도 finally 가 수행된 후 실행이 취소된다.
+                    return;
+                } finally {
+                    // 로딩바 닫기
+                    loading.classList.remove('active');
+                }
+
+                // Ajax 의 응답결과를 구조분해하여 개별 변수로 추출
+                const { id, dname, loc } = response.data;
+
+                // 추출한 결과를 미리 준비한 HTML 구조에 출력하고 컨테이너를 화면에 표시함
+                container.querySelector(".id").innerHTML = id;
+                container.querySelector(".dname").innerHTML = dname;
+                container.querySelector(".loc").innerHTML = loc;
+                container.style.display = 'block';
+
+                /** history 구성하기 */
+                // 현재 페이지를 표시하는데 사용된 데이터와 URL 을 히스토리에 추가. (페이지 이동 효과)
+                const state = { data : JSON.stringify(response.data) };
+                const url = 'http://localhost:63342/Language_JavaScript/seunghee/_메가스터디/_23_Ajax/03_dept_item.html?deptno=' + deptno;
+                history.pushState(state, null, url);
+            });
+        });
+
+        /** history 가 이전 페이지로 되돌아 갈 때 발생하는 이벤트 */
+        window.addEventListener('popstate', (e) => {
+            if(e.state) {
+                const json = JSON.parse(e.state.data);
+                container.querySelector(".id").innerHTML = json.id || '';
+                container.querySelector(".dname").innerHTML = json.dname || '';
+                container.querySelector(".loc").innerHTML = json.loc || '';
+            } else {
+                container.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
