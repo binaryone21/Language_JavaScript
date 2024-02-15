@@ -1,0 +1,394 @@
+/**
+ * 메인 페이지 스타일
+ */
+
+@import "_common.scss";
+.main {
+  // background-color: #0000ff55; //   작업하는 동안의 임시 적용
+
+  // 상단영역의 높이보다 여유 있게 여백을 줌 (임시)
+  // padding-top: 100px;
+
+  .title {
+    width: 100%;
+    // vh 는 viewport 의 height 를 기준으로 한 %
+    height: 40vh;
+    display: flex;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+
+    .hello {
+      margin: auto;
+      color: $white;
+      text-align: center;
+      text-transform: uppercase;
+      padding: 30px 50px;
+
+      @include desktop-md {
+        padding: 20px 30px;
+      }
+
+      h1 {
+        font-size: 36px;
+        font-weight: 600;
+        white-space: nowrap;
+        margin-bottom: 10px;
+
+        @include desktop-md {
+          font-size: 26px;
+        }
+      }
+
+      p {
+        font-size: 20px;
+        font-weight: 300;
+
+        @include desktop-md {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .introduce {
+    // 각 영역을 확인하기 위한 임시코드
+    // background-color: #ff000022;
+    // height: 150px;
+
+    .title {
+      height: 100vh;
+      background-image: url("../img/parallax1.jpg");
+      .hello {
+        background-color: $gray;
+      }
+    }
+
+    .about-me {
+      max-width: 1100px;
+      margin: auto;
+      padding: 65px 40px;
+
+      @include desktop-md {
+        padding: 45px 20px;
+      }
+
+      h2 {
+        font-size: 42px;
+        color: $dark-gray;
+        margin-bottom: 40px;
+        text-align: center;
+
+        @include desktop-md {
+          font-size: 36px;
+          margin-bottom: 20px;
+        }
+      }
+
+      h3 {
+        font-size: 30px;
+        font-weight: 400;
+        margin-bottom: 40px;
+        font-style: italic;
+        color: $gray;
+        text-align: center;
+
+        @include desktop-md {
+          font-size: 20px;
+          margin-bottom: 30px;
+          font-weight: 300;
+        }
+      }
+
+      p {
+        line-height: 150%;
+        font-size: 18px;
+        margin-bottom: 45px;
+        font-weight: 300;
+
+        @include desktop-md {
+          line-height: 135%;
+          font-size: 16px;
+          margin-bottom: 25px;
+        }
+      }
+
+      .about-box {
+        display: flex;
+        flex-wrap: wrap;
+
+        .photo-box {
+          width: 50%;
+          padding: 0 35px;
+
+          @include desktop-md {
+            width: 100%;
+            padding: 0 20px;
+          }
+
+          h4 {
+            font-size: 22px;
+            color: $gray;
+            margin-bottom: 20px;
+
+            @include desktop-md {
+              text-align: center;
+            }
+
+            i {
+              margin-right: 10px;
+            }
+          }
+
+          img {
+            width: 100%;
+          }
+        }
+
+        p {
+          width: 50%;
+          padding-top: 40px;
+
+          @include desktop-md {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .skill {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 40px 50px 40px;
+
+      h2 {
+        font-size: 32px;
+        margin-bottom: 45px;
+        text-align: center;
+        color: $gray;
+
+        @include desktop-md {
+          font-size: 28px;
+          margin-bottom: 35px;
+        }
+      }
+
+      .skill-section {
+        h3 {
+          font-size: 22px;
+          margin-bottom: 15px;
+          font-weight: 300;
+          letter-spacing: 8px;
+
+          @include desktop-md {
+            font-size: 18px;
+            margin-bottom: 10px;
+          }
+        }
+
+        .bar-container {
+          height: 35px;
+          background-color: $light-gray;
+          margin-bottom: 30px;
+
+          @include desktop-md {
+            height: 25px;
+            margin-bottom: 20px;
+          }
+
+          .bar {
+            height: 100%;
+            background-color: $gray;
+            text-align: center;
+            color: $white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &.w90p {
+              width:90%;
+            }
+
+            &.w850 {
+              width: 85%;
+            }
+
+            &.w75p {
+              width: 75%;
+            }
+          }
+        }
+      }
+    }
+
+    .point {
+      background-color: $gray;
+
+      .point-container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 60px 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        @include desktop-md {
+          padding: 20px 10px;
+        }
+
+        .point-item {
+          width: 25%;
+          text-align: center;
+          color: $white;
+          margin: 20px auto;
+
+          @include desktop-md {
+            width: 50%;
+          }
+
+          .point-value {
+            font-size: 45px;
+            font-weight: 500;
+            margin-bottom: 25px;
+
+            @include desktop-md {
+              font-size: 38px;
+              font-weight: 400;
+              margin-bottom: 20px;
+            }
+          }
+
+          .point-text {
+            font-size: 24px;
+            font-weight: 300;
+
+            @include desktop-md {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .portfolio {
+    .title {
+      background-image: url('../img/parallax2.jpg');
+    }
+    .content {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+
+      @include desktop-md {
+        padding: 30px 10px;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 40px;
+        margin-bottom: 32px;
+        color: $dark-gray;
+
+        @include desktop-md {
+          font-size: 30px;
+          margin-bottom: 24px;
+        }
+      }
+
+      p {
+        text-align: center;
+        margin-bottom: 24px;
+        font-size: 20px;
+        color: $gray;
+        font-weight: 300;
+        font-style: italic;
+
+        @include desktop-md {
+          font-size: 16px;
+          margin-bottom: 20px;
+        }
+      }
+
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 50px;
+
+        li {
+          width: 25%;
+          padding: 10px;
+
+          @include desktop-md {
+            width: 50%;
+          }
+
+          a {
+            display: block;
+            overflow: hidden;
+
+            img {
+              width: 100%;
+              transition: all 0.3s ease-in-out;
+
+              &:hover {
+                transform: scale(1.2, 1.2);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .contact {
+    .title {
+      background-image: url('../img/parallax3.jpg');
+    }
+    .content {
+      max-width: 1200px;
+      margin: 30px auto;
+      display: flex;
+      flex-wrap: wrap;
+
+      .map {
+        max-width: 50%;
+        padding: 20px;
+        @include desktop-md {
+          max-width: 100%;
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .contact {
+        max-width: 50%;
+        padding: 20px;
+
+        @include desktop-md {
+          max-width: 100%;
+        }
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          height: 100%;
+
+          li {
+            font-size: 26px;
+            color: $gray;
+            padding-left: 35px;
+            line-height: 150%;
+
+            i {
+              margin-right: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

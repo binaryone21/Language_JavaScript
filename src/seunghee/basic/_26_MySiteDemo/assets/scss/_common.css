@@ -1,0 +1,174 @@
+@charset "UTF-8";
+/**
+ * 모든 페이지에서 사용될 공통적인 내용을 정의하는 파일
+ */
+/**
+ * http://meyerweb.com/eric/tools/css/reset/ 
+ * v2.0 | 20110126
+ * License: none (public domain)
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*----------------------------------------------------
+ * 사이트의 기본 색상값들에 대한 변수 설정
+ *----------------------------------------------------*/
+/**
+* 반응형 웹 구현을 위한 믹스인
+*/
+/** Desktop First */
+/** Mobile First */
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+/**
+ * 상단영역
+ */
+.header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+.header .menu {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+}
+.header .menu li {
+  text-align: center;
+}
+@media only screen and (max-width: 992px) {
+  .header .menu li {
+    width: 20%;
+  }
+}
+.header .menu li:last-child {
+  margin-left: auto;
+}
+.header .menu li:last-child span {
+  display: none;
+}
+@media only screen and (max-width: 992px) {
+  .header .menu li:last-child span {
+    display: block;
+  }
+}
+.header .menu li a {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 20px 10px;
+}
+.header .menu li a:hover {
+  background-color: rgba(0, 0, 0, 0.0666666667);
+}
+.header .menu li a span {
+  margin-left: 10px;
+}
+@media only screen and (max-width: 992px) {
+  .header .menu li a span {
+    display: block;
+    margin-top: 5px;
+    margin-left: 0;
+    font-size: 12px;
+  }
+}
+
+/**
+ * 하단영역
+ */
+.footer {
+  background-color: #000000;
+  text-align: center;
+  padding: 50px 10px;
+}
+.footer .to-the-top {
+  display: inline-block;
+  background-color: #eeeeee;
+  padding: 10px 25px;
+  font-size: 18px;
+  color: #616161;
+  margin-bottom: 10px;
+}
+.footer .to-the-top i {
+  margin-right: 10px;
+}
+.footer .to-the-top:hover {
+  background-color: #0f0;
+  color: #000000;
+}
+.footer .social-list {
+  display: flex;
+  justify-content: center;
+}
+.footer .social-list a {
+  color: #f1f1f1;
+  display: block;
+  font-size: 35px;
+  margin: 20px 10px 40px 10px;
+}
+.footer .social-list a:hover {
+  color: #0f0;
+}
+.footer address {
+  color: #f1f1f1;
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=_common.css.map */

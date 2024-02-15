@@ -1,0 +1,104 @@
+/**
+ * html 이 참조할 스타일 본체
+ * 파일명.css 형식의 소스코드가 생성된다.
+ */
+
+// 다른 파일 참조
+@import '_colors.scss';
+@import '_mixins.scss';
+@import '_responsive.scss';
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: $black;
+}
+
+.myScss {
+  width: 1180px;
+  margin: 30px auto;
+  background-color: $white;
+  padding: 30px;
+  border-radius: 30px;
+  display: flex;
+  flex-wrap: wrap;
+
+  @include desktop-md {
+    width: 800px;
+  }
+
+  @include  desktop-sm {
+    width: 600px;
+  }
+
+  @include desktop-xs {
+    width: 100%;
+  }
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $black;
+    width: 100%;
+
+    &:after {
+      content: '(large)';
+      color: $red;
+      font-size: 28px;
+
+      @include desktop-md {
+        content: '(medium)';
+        color: $blue;
+        font-size: 24px;
+      }
+
+      @include desktop-sm {
+        content: '(small)';
+        color: $green;
+        font-size: 20px;
+      }
+
+      @include desktop-xs {
+        content: '(extra-small)';
+        color: $orange;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .myScssBox {
+    cursor: pointer;
+
+    // 상위 클래스 (.myScssBox)와 동시에 적용된 클래스를 의미
+    &.red {
+      background-color: $red;
+      @include mybox(1);
+    }
+
+    &.green {
+      background-color: $green;
+      @include mybox(2);
+    }
+
+    &.blue {
+      background-color: $blue;
+      @include mybox(3);
+    }
+
+    &.orange {
+      background-color: $orange;
+      @include mybox(4);
+    }
+
+    &.yellow {
+      background-color: $yellow;
+      @include mybox(5);
+    }
+
+    &.pink {
+      background-color: $pink;
+      @include mybox(6);
+    }
+  }
+}

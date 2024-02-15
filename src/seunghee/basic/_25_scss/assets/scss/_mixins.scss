@@ -1,0 +1,29 @@
+/**
+ * 믹스인
+ * - 여기저기 반복적으로 등장해야 하는 구문에 대한 묶음
+ * - 믹스인은 @mixin 지시자를 사용하여 정의
+ * - JS의 함수 역할을 함
+ */
+@mixin mybox($w) {
+  // 변수값 지정(박스 하나의 기본 크기)
+  $calc: 100px;
+
+  // 파라미터 $w에 대한 조건 분기
+  @if $w % 2 == 0 {
+    $calc: $calc + 30px;
+  } @else if $w % 3 == 0 {
+    $calc: $calc + 50px;
+  } @else {
+    $calc: $calc;
+  }
+
+  // 연산 결과를 박스의 넓이로 사용
+  width: $calc;
+  height: 32px * 2;
+  transition: all 0.3s ease-in-out;
+
+  // 가상클래스는 &기호를 사용
+  &:hover {
+    transform: scale(1.2, 1.2);
+  }
+}

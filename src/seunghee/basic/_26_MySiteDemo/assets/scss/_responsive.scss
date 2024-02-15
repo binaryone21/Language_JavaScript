@@ -1,0 +1,59 @@
+ /**
+ * 반응형 웹 구현을 위한 믹스인
+ */
+
+// 반응형 웹을 위한 미디어 쿼리 구간 정의
+$breakpoint-extra-small: 640px;
+$breakpoint-small: 768px;
+$breakpoint-medium: 992px;
+$breakpoint-large: 1200px;
+
+/** Desktop First */
+@mixin desktop-xs {
+    @media only screen and (max-width: #{$breakpoint-extra-small}) {
+        @content;
+    }
+}
+
+@mixin desktop-sm {
+    @media only screen and (max-width: #{$breakpoint-small}) {
+        @content;
+    }
+}
+
+@mixin desktop-md {
+    @media only screen and (max-width: #{$breakpoint-medium}) {
+        @content;
+    }
+}
+
+@mixin desktop-lg {
+    @media only screen and (max-width: #{$breakpoint-large}) {
+        @content;
+    }
+}
+
+/** Mobile First */
+@mixin mobile-xs {
+    @media only screen and (min-width: #{$breakpoint-extra-small+1}) {
+        @content;
+    }
+}
+
+@mixin mobile-sm {
+    @media only screen and (min-width: #{$breakpoint-small+1}) {
+        @content;
+    }
+}
+
+@mixin mobile-md {
+    @media only screen and (min-width: #{$breakpoint-medium+1}) {
+        @content;
+    }
+}
+
+@mixin mobile-lg {
+    @media only screen and (min-width: #{$breakpoint-large+1}) {
+        @content;
+    }
+}

@@ -1,0 +1,529 @@
+@charset "UTF-8";
+/**
+ * 메인 페이지 스타일
+ */
+/**
+ * 모든 페이지에서 사용될 공통적인 내용을 정의하는 파일
+ */
+/**
+ * http://meyerweb.com/eric/tools/css/reset/ 
+ * v2.0 | 20110126
+ * License: none (public domain)
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*----------------------------------------------------
+ * 사이트의 기본 색상값들에 대한 변수 설정
+ *----------------------------------------------------*/
+/**
+* 반응형 웹 구현을 위한 믹스인
+*/
+/** Desktop First */
+/** Mobile First */
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+/**
+ * 상단영역
+ */
+.header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+.header .menu {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+}
+.header .menu li {
+  text-align: center;
+}
+@media only screen and (max-width: 992px) {
+  .header .menu li {
+    width: 20%;
+  }
+}
+.header .menu li:last-child {
+  margin-left: auto;
+}
+.header .menu li:last-child span {
+  display: none;
+}
+@media only screen and (max-width: 992px) {
+  .header .menu li:last-child span {
+    display: block;
+  }
+}
+.header .menu li a {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 20px 10px;
+}
+.header .menu li a:hover {
+  background-color: rgba(0, 0, 0, 0.0666666667);
+}
+.header .menu li a span {
+  margin-left: 10px;
+}
+@media only screen and (max-width: 992px) {
+  .header .menu li a span {
+    display: block;
+    margin-top: 5px;
+    margin-left: 0;
+    font-size: 12px;
+  }
+}
+
+/**
+ * 하단영역
+ */
+.footer {
+  background-color: #000000;
+  text-align: center;
+  padding: 50px 10px;
+}
+.footer .to-the-top {
+  display: inline-block;
+  background-color: #eeeeee;
+  padding: 10px 25px;
+  font-size: 18px;
+  color: #616161;
+  margin-bottom: 10px;
+}
+.footer .to-the-top i {
+  margin-right: 10px;
+}
+.footer .to-the-top:hover {
+  background-color: #0f0;
+  color: #000000;
+}
+.footer .social-list {
+  display: flex;
+  justify-content: center;
+}
+.footer .social-list a {
+  color: #f1f1f1;
+  display: block;
+  font-size: 35px;
+  margin: 20px 10px 40px 10px;
+}
+.footer .social-list a:hover {
+  color: #0f0;
+}
+.footer address {
+  color: #f1f1f1;
+  font-size: 18px;
+}
+
+.main .title {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+.main .title .hello {
+  margin: auto;
+  color: #f1f1f1;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 30px 50px;
+}
+@media only screen and (max-width: 992px) {
+  .main .title .hello {
+    padding: 20px 30px;
+  }
+}
+.main .title .hello h1 {
+  font-size: 36px;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-bottom: 10px;
+}
+@media only screen and (max-width: 992px) {
+  .main .title .hello h1 {
+    font-size: 26px;
+  }
+}
+.main .title .hello p {
+  font-size: 20px;
+  font-weight: 300;
+}
+@media only screen and (max-width: 992px) {
+  .main .title .hello p {
+    font-size: 16px;
+  }
+}
+.main .introduce .title {
+  height: 100vh;
+  background-image: url("../img/parallax1.jpg");
+}
+.main .introduce .title .hello {
+  background-color: #616161;
+}
+.main .introduce .about-me {
+  max-width: 1100px;
+  margin: auto;
+  padding: 65px 40px;
+}
+@media only screen and (max-width: 992px) {
+  .main .introduce .about-me {
+    padding: 45px 20px;
+  }
+}
+.main .introduce .about-me h2 {
+  font-size: 42px;
+  color: #444444;
+  margin-bottom: 40px;
+  text-align: center;
+}
+@media only screen and (max-width: 992px) {
+  .main .introduce .about-me h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+}
+.main .introduce .about-me h3 {
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  font-style: italic;
+  color: #616161;
+  text-align: center;
+}
+@media only screen and (max-width: 992px) {
+  .main .introduce .about-me h3 {
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 300;
+  }
+}
+.main .introduce .about-me p {
+  line-height: 150%;
+  font-size: 18px;
+  margin-bottom: 45px;
+  font-weight: 300;
+}
+@media only screen and (max-width: 992px) {
+  .main .introduce .about-me p {
+    line-height: 135%;
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+}
+.main .introduce .about-me .about-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+.main .introduce .about-me .about-box .photo-box {
+  width: 50%;
+  padding: 0 35px;
+}
+@media only screen and (max-width: 992px) {
+  .main .introduce .about-me .about-box .photo-box {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+.main .introduce .about-me .about-box .photo-box h4 {
+  font-size: 22px;
+  color: #616161;
+  margin-bottom: 20px;
+}
+@media only screen and (max-width: 992px) {
+  .main .introduce .about-me .about-box .photo-box h4 {
+    text-align: center;
+  }
+}
+.main .introduce .about-me .about-box .photo-box h4 i {
+  margin-right: 10px;
+}
+.main .introduce .about-me .about-box .photo-box img {
+  width: 100%;
+}
+.main .introduce .about-me .about-box p {
+  width: 50%;
+  padding-top: 40px;
+}
+@media only screen and (max-width: 992px) {
+  .main .introduce .about-me .about-box p {
+    width: 100%;
+  }
+}
+.main .introduce .skill {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 40px 50px 40px;
+}
+.main .introduce .skill h2 {
+  font-size: 32px;
+  margin-bottom: 45px;
+  text-align: center;
+  color: #616161;
+}
+@media only screen and (max-width: 992px) {
+  .main .introduce .skill h2 {
+    font-size: 28px;
+    margin-bottom: 35px;
+  }
+}
+.main .introduce .skill .skill-section h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: 300;
+  letter-spacing: 8px;
+}
+@media only screen and (max-width: 992px) {
+  .main .introduce .skill .skill-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+}
+.main .introduce .skill .skill-section .bar-container {
+  height: 35px;
+  background-color: #eeeeee;
+  margin-bottom: 30px;
+}
+@media only screen and (max-width: 992px) {
+  .main .introduce .skill .skill-section .bar-container {
+    height: 25px;
+    margin-bottom: 20px;
+  }
+}
+.main .introduce .skill .skill-section .bar-container .bar {
+  height: 100%;
+  background-color: #616161;
+  text-align: center;
+  color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main .introduce .skill .skill-section .bar-container .bar.w90p {
+  width: 90%;
+}
+.main .introduce .skill .skill-section .bar-container .bar.w850 {
+  width: 85%;
+}
+.main .introduce .skill .skill-section .bar-container .bar.w75p {
+  width: 75%;
+}
+.main .introduce .point {
+  background-color: #616161;
+}
+.main .introduce .point .point-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 60px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 992px) {
+  .main .introduce .point .point-container {
+    padding: 20px 10px;
+  }
+}
+.main .introduce .point .point-container .point-item {
+  width: 25%;
+  text-align: center;
+  color: #f1f1f1;
+  margin: 20px auto;
+}
+@media only screen and (max-width: 992px) {
+  .main .introduce .point .point-container .point-item {
+    width: 50%;
+  }
+}
+.main .introduce .point .point-container .point-item .point-value {
+  font-size: 45px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+@media only screen and (max-width: 992px) {
+  .main .introduce .point .point-container .point-item .point-value {
+    font-size: 38px;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+}
+.main .introduce .point .point-container .point-item .point-text {
+  font-size: 24px;
+  font-weight: 300;
+}
+@media only screen and (max-width: 992px) {
+  .main .introduce .point .point-container .point-item .point-text {
+    font-size: 16px;
+  }
+}
+.main .portfolio .title {
+  background-image: url("../img/parallax2.jpg");
+}
+.main .portfolio .content {
+  max-width: 1200px;
+  margin: auto;
+  padding: 60px 20px;
+}
+@media only screen and (max-width: 992px) {
+  .main .portfolio .content {
+    padding: 30px 10px;
+  }
+}
+.main .portfolio .content h1 {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 32px;
+  color: #444444;
+}
+@media only screen and (max-width: 992px) {
+  .main .portfolio .content h1 {
+    font-size: 30px;
+    margin-bottom: 24px;
+  }
+}
+.main .portfolio .content p {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 20px;
+  color: #616161;
+  font-weight: 300;
+  font-style: italic;
+}
+@media only screen and (max-width: 992px) {
+  .main .portfolio .content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+}
+.main .portfolio .content .gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+.main .portfolio .content .gallery li {
+  width: 25%;
+  padding: 10px;
+}
+@media only screen and (max-width: 992px) {
+  .main .portfolio .content .gallery li {
+    width: 50%;
+  }
+}
+.main .portfolio .content .gallery li a {
+  display: block;
+  overflow: hidden;
+}
+.main .portfolio .content .gallery li a img {
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+.main .portfolio .content .gallery li a img:hover {
+  transform: scale(1.2, 1.2);
+}
+.main .contact .title {
+  background-image: url("../img/parallax3.jpg");
+}
+.main .contact .content {
+  max-width: 1200px;
+  margin: 30px auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.main .contact .content .map {
+  max-width: 50%;
+  padding: 20px;
+}
+@media only screen and (max-width: 992px) {
+  .main .contact .content .map {
+    max-width: 100%;
+  }
+}
+.main .contact .content .map img {
+  width: 100%;
+}
+.main .contact .content .contact {
+  max-width: 50%;
+  padding: 20px;
+}
+@media only screen and (max-width: 992px) {
+  .main .contact .content .contact {
+    max-width: 100%;
+  }
+}
+.main .contact .content .contact ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+.main .contact .content .contact ul li {
+  font-size: 26px;
+  color: #616161;
+  padding-left: 35px;
+  line-height: 150%;
+}
+.main .contact .content .contact ul li i {
+  margin-right: 15px;
+}
+
+/*# sourceMappingURL=index.css.map */

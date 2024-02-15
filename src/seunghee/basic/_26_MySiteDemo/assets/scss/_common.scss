@@ -1,0 +1,119 @@
+/**
+ * 모든 페이지에서 사용될 공통적인 내용을 정의하는 파일
+ */
+
+// 공통 파일들 참조
+@import 'reset.scss';
+@import 'colors.scss';
+@import 'responsive.scss';
+
+// 모든 태그에 대한 기본 글꼴 설정
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+// 링크에 대한 기본 설정
+a {
+  text-decoration: none;
+  color: $black;
+}
+
+/**
+ * 상단영역
+ */
+.header {
+  // background-color: #ff000022;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  .menu {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    li {
+      text-align: center;
+      @include desktop-md {
+        width: 20%;
+      }
+
+      &:last-child {
+        margin-left: auto;
+        span {
+          display: none;
+          @include desktop-md {
+            display: block;
+          }
+        }
+      }
+      a {
+        display: block;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 20px 10px;
+
+        &:hover {
+          background-color: $black-op;
+        }
+        span {
+          margin-left: 10px;
+          @include desktop-md {
+            display: block;
+            margin-top: 5px;
+            margin-left: 0;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * 하단영역
+ */
+.footer {
+  background-color: $black;
+  text-align: center;
+  padding: 50px 10px;
+  .to-the-top {
+    display: inline-block;
+    background-color: $light-gray;
+    padding: 10px 25px;
+    font-size: 18px;
+    color: $gray;
+    margin-bottom: 10px;
+    i {
+      margin-right: 10px;
+    }
+    &:hover {
+      background-color: $green;
+      color: $black;
+    }
+  }
+  .social-list {
+    // background-color: aqua;
+    display: flex;
+    justify-content: center;
+
+    a {
+      color: $white;
+      display: block;
+      font-size: 35px;
+      margin: 20px 10px 40px 10px;
+
+      &:hover {
+        color: $green;
+      }
+    }
+  }
+
+  address {
+    color: $white;
+    font-size: 18px;
+
+  }
+}

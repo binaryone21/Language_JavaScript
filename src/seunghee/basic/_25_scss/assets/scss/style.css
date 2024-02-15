@@ -1,0 +1,142 @@
+@charset "UTF-8";
+/**
+ * html 이 참조할 스타일 본체
+ * 파일명.css 형식의 소스코드가 생성된다.
+ */
+/**
+ * 색상 정의 파일
+ * 파일 이름에 '_' 가 붙으면 컴파일(변환) 되지 않음
+ */
+/**
+ * 믹스인
+ * - 여기저기 반복적으로 등장해야 하는 구문에 대한 묶음
+ * - 믹스인은 @mixin 지시자를 사용하여 정의
+ * - JS의 함수 역할을 함
+ */
+/**
+ * 반응형 웹 구현을 위한 믹스인
+ */
+/** Desktop First */
+/** Mobile First */
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #000;
+}
+
+.myScss {
+  width: 1180px;
+  margin: 30px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+@media only screen and (max-width: 992px) {
+  .myScss {
+    width: 800px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .myScss {
+    width: 600px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .myScss {
+    width: 100%;
+  }
+}
+.myScss h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #000;
+  width: 100%;
+}
+.myScss h1:after {
+  content: "(large)";
+  color: #f00;
+  font-size: 28px;
+}
+@media only screen and (max-width: 992px) {
+  .myScss h1:after {
+    content: "(medium)";
+    color: #00f;
+    font-size: 24px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .myScss h1:after {
+    content: "(small)";
+    color: #0f0;
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .myScss h1:after {
+    content: "(extra-small)";
+    color: #f60;
+    font-size: 16px;
+  }
+}
+.myScss .myScssBox {
+  cursor: pointer;
+}
+.myScss .myScssBox.red {
+  background-color: #f00;
+  width: 100px;
+  height: 64px;
+  transition: all 0.3s ease-in-out;
+}
+.myScss .myScssBox.red:hover {
+  transform: scale(1.2, 1.2);
+}
+.myScss .myScssBox.green {
+  background-color: #0f0;
+  width: 130px;
+  height: 64px;
+  transition: all 0.3s ease-in-out;
+}
+.myScss .myScssBox.green:hover {
+  transform: scale(1.2, 1.2);
+}
+.myScss .myScssBox.blue {
+  background-color: #00f;
+  width: 150px;
+  height: 64px;
+  transition: all 0.3s ease-in-out;
+}
+.myScss .myScssBox.blue:hover {
+  transform: scale(1.2, 1.2);
+}
+.myScss .myScssBox.orange {
+  background-color: #f60;
+  width: 130px;
+  height: 64px;
+  transition: all 0.3s ease-in-out;
+}
+.myScss .myScssBox.orange:hover {
+  transform: scale(1.2, 1.2);
+}
+.myScss .myScssBox.yellow {
+  background-color: #ff0;
+  width: 100px;
+  height: 64px;
+  transition: all 0.3s ease-in-out;
+}
+.myScss .myScssBox.yellow:hover {
+  transform: scale(1.2, 1.2);
+}
+.myScss .myScssBox.pink {
+  background-color: #f0f;
+  width: 130px;
+  height: 64px;
+  transition: all 0.3s ease-in-out;
+}
+.myScss .myScssBox.pink:hover {
+  transform: scale(1.2, 1.2);
+}
+
+/*# sourceMappingURL=style.css.map */
