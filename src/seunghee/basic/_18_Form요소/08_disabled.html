@@ -12,7 +12,7 @@
 </head>
 <body>
     <label for="username">입력하기 <input type="checkbox" id="input_enabled"/></label>
-    <input type="text" name="input" id="input" disabled/>
+    <input type="text" name="input" id="username" disabled/>
 
     <script>
         /**
@@ -26,7 +26,7 @@
          *  - selected => 선택됨=true, 선택해제=false (dropdown의 option태그)
          */
         document.querySelector("#input_enabled").addEventListener("change", e => {
-            document.querySelector("#input").disabled = !e.currentTarget.checked;
+            document.querySelector("#username").disabled = !e.currentTarget.checked;
         })
     </script>
 </body>
