@@ -68,7 +68,7 @@
         console.groupEnd();
 
         // queryString 을 객체로 변환
-        const query = new URLSEARCHParams(loation.search);
+        const query = new URLSearchParams(location.search);
         const { weekday } = Object.fromEntries(query);
 
         /** 현재 파라미터값과 일치하는 메뉴에 대한 강조 처리 */
